@@ -21,11 +21,15 @@ namespace Behaviors.Sample
 
 		public ICommand OutputMessageCommand { get; private set; }
 
+		public ICommand OutputTextChangedMessageCommand { get; private set; }
+
 		public string SelectedItemText { get; private set; }
 
 		public string AgeText { get; private set; }
 
 		public string MessageText { get; private set; }
+
+		public string MessageTextChanged { get; private set; }
 
 		public event PropertyChangedEventHandler PropertyChanged;
 
@@ -44,6 +48,7 @@ namespace Behaviors.Sample
 			ItemSelectedCommand = new Command<Person> (OutputItemSelected);
 			OutputAgeCommand = new Command<Person> (OutputAge);
 			OutputMessageCommand = new Command (OutputMessage);
+			OutputTextChangedMessageCommand = new Command(OutputTextChangedMessage);
 		}
 
 		void OnPageAppearing ()
@@ -75,6 +80,12 @@ namespace Behaviors.Sample
 		{
 			MessageText = "Successfully entered text.";
 			OnPropertyChanged ("MessageText");
+		}
+
+		void OutputTextChangedMessage ()
+        {
+			MessageTextChanged = "The Entry text has changed.";
+			OnPropertyChanged("MessageTextChanged");
 		}
 
 		protected virtual void OnPropertyChanged (string propertyName)

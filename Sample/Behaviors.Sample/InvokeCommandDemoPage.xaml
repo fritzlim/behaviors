@@ -54,13 +54,14 @@
 			<Label Text="{Binding MessageText}"/>
 			<local:Separator />
 			<Label Text="Invoke Command when TextChanged event fires" FontAttributes="Bold" HorizontalOptions="Center" />
-			<Entry x:Name="entry2" Placeholder="Enter Xamarin (case sensitive) here">
+			<Entry x:Name="entry2" Placeholder="Enter any text here">
 				<Entry.Behaviors>
 					<behaviors:EventHandlerBehavior EventName="TextChanged">
-                        <behaviors:InvokeCommandAction Command="{Binding OutputMessageCommand}" />
+                        <behaviors:InvokeCommandAction Command="{Binding OutputTextChangedMessageCommand}" />
                     </behaviors:EventHandlerBehavior>
 				</Entry.Behaviors>
 			</Entry>
+			<Label Text="{Binding MessageTextChanged}"/>
 		</StackLayout>
 	</Grid>
 </ContentPage>
